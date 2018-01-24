@@ -20,11 +20,13 @@ import { HomeComponent } from './components';
 import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { AnimalsComponent } from './components/pages/animals/animals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AnimalsComponent
   ],
   imports: [
     AppRoutingModule,

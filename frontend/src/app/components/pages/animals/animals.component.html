@@ -1,0 +1,100 @@
+<style type="text/css">
+  .container{
+    margin-top:20px;
+    margin-bottom:100px;
+    width:100%;
+    background-color:  rgba(0,0,0, 0.5);
+    height: 700px;
+  }
+
+  #title{
+    text-align:center;
+    padding-top: 25px;
+    font-size: 65px;
+    font-weight: bold;
+    color:black;
+    letter-spacing: 10px;
+    word-spacing: 10px;
+    text-shadow: 3px 2px white;
+    
+  }
+
+  #back{
+   height : 754px;
+   margin-top: -20px;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-image:url(http://gipsypixel.com/wp-content/uploads/2017/11/Dense-Forest-Ultra-Hd-Wallpaper-Uhd-Backgrounds-Widescreen-Of-Smartphone-Pics.jpeg)
+  }
+
+
+  #tabel{
+    margin-left:40px;
+    padding-top: 100px;
+
+  }
+</style>
+
+  <!-- <div id="back"></div> -->
+      <!-- <h1 id="title"> Gaseste animalul perfect </h1> -->
+    <p-dataTable [value]="animals" selectionMode="single" [(selection)]="selectedAnimal" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+        <p-header>Animals</p-header>
+          <p-column field="name" header="Name" [sortable]="true"></p-column>
+          <p-column field="gender" header="Gender" [sortable]="true"></p-column>
+          <p-column field="age" header="Age" [sortable]="true"></p-column>
+          <p-column field="size" header="Size" [sortable]="true"></p-column>
+          <p-column field="vaccines" header="Vaccines" [sortable]="true"></p-column>
+          <p-column field="history" header="History" [sortable]="true"></p-column>
+        
+          <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+      </p-dataTable>
+    
+      <p-dialog header="Animals" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="animals">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="name">Name</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="animals.name" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="gender">Gender</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="gender" [(ngModel)]="animals.gender" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="age">Age</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="age" [(ngModel)]="animals.age" /></div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-4"><label for="size">Size</label></div>
+              <div class="ui-grid-col-8"><input pInputText id="size" [(ngModel)]="animals.size" /></div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-4"><label for="vaccines">Vaccines</label></div>
+              <div class="ui-grid-col-8"><input pInputText id="vaccines" [(ngModel)]="animals.vaccines" /></div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-4"><label for="history">History</label></div>
+              <div class="ui-grid-col-8"><input pInputText id="history" [(ngModel)]="animals.history" /></div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+      
+      <!-- <div class="container">
+        <table>
+          <tr>
+            <td><img src="http://cdn1-www.dogtime.com/assets/uploads/2011/04/file_2153_column_popular-dog-names.jpg" width = 500px></td>
+            <td></td>
+          </tr>
+          <tr height= "100px"><td></td><td></td></tr>
+          <tr>
+            <td></td>
+            <td><img src="https://d3jkudlc7u70kh.cloudfront.net/cat-facts.jpg" width= 600px></td>
+          </tr>
+
+        </table>
+      </div> 
+  </div> -->
