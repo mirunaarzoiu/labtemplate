@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/';
+import { MenuItem } from 'primeng/components/common/menuitem';
 
 @Component({
   selector: 'app-animals',
@@ -17,7 +18,7 @@ export class AnimalsComponent implements OnInit {
   }
 
   refresh() {
-    this.apiService.get('api/prescription').subscribe(res =>{    
+    this.apiService.get('api/animals').subscribe(res =>{    
     this.animals = res;
     console.log(this.animals[0].name);
    });
@@ -29,7 +30,7 @@ export class AnimalsComponent implements OnInit {
   }
 
   delete() {
-    this.apiService.delete('api/animal/' + this.selectedAnimal.name).subscribe(res => {
+    this.apiService.delete('api/animals/' + this.selectedAnimal.id).subscribe(res => {
         this.refresh();
     });
 }  
@@ -55,10 +56,8 @@ export class AnimalsComponent implements OnInit {
   
 }
 
-
-   
-
 class Animal {
+  id:number;
   type:string;
   vaccines:string;
   age:number;
