@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var animals = sequelize.define('animals', {
     type: DataTypes.STRING,
     vaccines: DataTypes.STRING,
-    age: DataTypes.INT,
+    age: DataTypes.INTEGER,
     history: DataTypes.STRING,
     name: DataTypes.STRING,
     gender: DataTypes.STRING,
