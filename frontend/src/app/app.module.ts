@@ -21,12 +21,14 @@ import { fakeBackendProvider } from './service';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { AnimalsComponent } from './components/pages/animals/animals.component';
+import { ContactComponent } from './components/pages/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AnimalsComponent
+    AnimalsComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,
