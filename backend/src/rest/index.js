@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var animals = require('../service/').animals;
 
-router.get('/', (req, res) => res.status(200).send({
-  message: 'Welcome to the API!',
-}));
+
+router.get('/', animals.list);
+router.get('/:id', animals.findById);
+router.post('/', animals.create);
+router.delete('/:id', animals.delete);
+
 
 module.exports = router;
