@@ -1,88 +1,254 @@
 <style type="text/css">
-  .container{
-    margin-top:20px;
-    margin-bottom:100px;
-    width:100%;
-    background-color:  rgba(0,0,0, 0.7);
+  .container {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     height: 700px;
   }
 
 
-  #title{
-    text-align:center;
+  #title {
+    text-align: center;
     padding-top: 25px;
-    font-size: 65px;
+    font-size: 55px;
     font-weight: bold;
-    color:black;
+    color: black;
     letter-spacing: 10px;
     word-spacing: 10px;
     text-shadow: 3px 2px white;
-    
-  }
-
-  #back{
-   height : 754px;
-   margin-top: -20px;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-image:url(http://www.tridanim.com/images/lghttp.32478.nexcesscdn.net/80E972/organiclifestylemagazine/wp-content/uploads/2015/10/Cats-and-Dogs.jpg)
-  }
-
-  tr{
-    height:150px;
 
   }
-  
 
+  #back {
+    height: 754px;
+    margin-top: -20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://wallpaperscraft.com/image/fox_snow_fog_muzzle_52909_3840x2160.jpg");
+  }
+
+
+  .tabel {
+    border: 2px;
+  }
+
+  .textAnimal {
+    color: white;
+    text-align: right;
+  }
+  .textStaff {
+    color: white;
+    text-align: left;
+  }
+
+  .staffTablecss{
+    background-color: rgba(0, 0, 0, 0.9);
+
+  }
 </style>
 
-  <div id="back">
-      <h1 id="title">Adaugari / Modificari </h1>
-      <div class="container">
-          <table>
-            <tr height>
-              <td>
-                <p-dataTable [value]="animals" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal"  rows="10" [responsive]="true">
-                  
-                  <p-column field="type" header="Type" [sortable]="true"></p-column>
-                  <p-column field="name" header="Name" [sortable]="true"></p-column>
-                  <p-column field="gender" header="Gender" [sortable]="true"></p-column>
-                  <p-column field="age" header="Age" [sortable]="true"></p-column>
-                  <p-column field="size" header="Size" [sortable]="true"></p-column>
-                  <p-column field="vaccines" header="Vaccines" [sortable]="true"></p-column>
-                  <p-column field="history" header="History" [sortable]="true"></p-column>
-    
-                  <p-footer>
-                    <div class="ui-helper-clearfix" style="width:100%">
-                      <button type="button" pButton icon="fa-star" style="float:right" (click)="delete()" label="Update a pet!"></button>  
-                      <button type="button" pButton icon="fa-plus" style="float:right" (click)="delete()" label="Add a pet!"></button>
-                    </div>
-                  </p-footer>
-                </p-dataTable>
-              </td>
-            </tr>
-            <tr><td></td></tr>
-            <tr>
-                <td>
-                    <p-dataTable [value]="staffs" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal"  rows="10" [responsive]="true">
-                      
-                      <p-column field="name" header="Name" [sortable]="true"></p-column>
-                      <p-column field="surname" header="Surname" [sortable]="true"></p-column>
-                      <p-column field="telephone" header="Telephone" [sortable]="true"></p-column>
-                      <p-column field="email" header="Email" [sortable]="true"></p-column>
-        
-                      <p-footer>
-                        <div class="ui-helper-clearfix" style="width:100%">
-                          <button type="button" pButton icon="fa-minus" style="float:right" (click)="deleteStaff()" label="Delete"></button>
-                          <button type="button" pButton icon="fa-star" style="float:right" (click)="updateStaff()" label="Update"></button>
-                          <button type="button" pButton icon="fa-plus" style="float:right" (click)="addStaff()" label="Add"></button>
-                        </div>
-                      </p-footer>
-                    </p-dataTable>
-                  </td>
-            </tr>
-          </table>
-          
+<div id="back">
+  <h1 id="title"> Alterations and Additions </h1>
+  <div class="container">
+    <table> 
+      <tr>
+        <td colspan=2>
+          <p-dataTable [value]="animals" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal" rows="5" [responsive]="true">
 
-      </div> 
+            <p-column field="type" header="Type" [sortable]="true"></p-column>
+            <p-column field="name" header="Name" [sortable]="true"></p-column>
+            <p-column field="gender" header="Gender" [sortable]="true"></p-column>
+            <p-column field="age" header="Age" [sortable]="true"></p-column>
+            <p-column field="size" header="Size" [sortable]="true"></p-column>
+            <p-column field="vaccines" header="Vaccines" [sortable]="true"></p-column>
+            <p-column field="history" header="History" [sortable]="true"></p-column>
+
+            <p-footer>
+              <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-star" style="float:right" (click)="showUpdateAnimal()" label="Update a pet!"></button>
+              </div>
+            </p-footer>
+          </p-dataTable>
+        </td>
+        <td>
+
+        </td>
+        <td align=right><br>
+          <div class="input">
+            <table>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="type" />
+                </td>
+                <td class="textAnimal">Type</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="anname" />
+                </td>
+                <td class="textAnimal">Name</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="gender" />
+                </td>
+                <td class="textAnimal">Gender</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="age" />
+                </td>
+                <td class="textAnimal">Age</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="size" />
+                </td>
+                <td class="textAnimal">Size</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="vaccines" />
+                </td>
+                <td class="textAnimal">Vaccines</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="history" />
+                </td>
+                <td class="textAnimal">History</td>
+              </tr>
+            </table>
+            <br><br>
+            <button pButton type="button" (click)="addAnimal(type,anname, gender, age, size, vaccines, history)" label="Add Animal"></button>
+          </div>
+        </td>
+      </tr>
+      <tr height=150px>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td align=left>
+          <div class="input">
+            <br>
+            <table>
+              <tr>
+                <td class="textStaff">Name</td>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="name" />
+                </td>
+              </tr>
+              <tr>
+                <td class="textStaff">Surname</td>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="surname" />
+                </td>
+              </tr>
+              <tr>
+                <td class="textStaff">Telephone</td>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="telephone" />
+                </td>
+              </tr>
+              <tr>
+                <td class="textStaff">Email</td>
+                <td>
+                  <input type="text" pInputText [(ngModel)]="email" />
+                </td>
+              </tr>
+            </table>
+            <br><br>
+            <button pButton type="button" (click)="addStaff(name, surname, telephone, email)" label="Add Staff"></button>
+          </div>
+        </td>
+        <td>
+
+        </td>
+        <td colspan=2>
+          <p-dataTable class="staffTablecss" [value]="staffs" [scrollable]="true" selectionMode="single" [(selection)]="selectedStaff" rows="5" [responsive]="true">
+
+            <p-column field="name" header="Name" [sortable]="true"></p-column>
+            <p-column field="surname" header="Surname" [sortable]="true"></p-column>
+            <p-column field="telephone" header="Telephone" [sortable]="true"></p-column>
+            <p-column field="email" header="Email" [sortable]="true"></p-column>
+
+            <p-footer>
+              <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-minus" style="float:right" (click)="deleteStaff()" label="Delete"></button>
+                <button align=right type="button" pButton icon="fa-star" style="float:right" (click)="showUpdateStaff()" label="Update"></button>
+              </div>
+            </p-footer>
+          </p-dataTable>
+        </td>
+
+      </tr>
+    </table>
+
   </div>
+</div>
+
+<p-dialog header="Update Animal" [(visible)]="animalDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedAnimal">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="type">Type</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="type" [(ngModel)]="selectedAnimal.type" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="name">Name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="selectedAnimal.name" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="gender">Gender</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="gender" [(ngModel)]="selectedAnimal.gender" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="age">Age</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="age" [(ngModel)]="selectedAnimal.age" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="size">Size</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="size" [(ngModel)]="selectedAnimal.size" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="vaccines">Vaccines</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="vaccines" [(ngModel)]="selectedAnimal.vaccines" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="history">History</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="history" [(ngModel)]="selectedAnimal.history" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-check" (click)="editAnimal(type,name,gender,age,size,vaccines,history)" label="Edit"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Update Staff" [(visible)]="staffDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedStaff">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="name">name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="selectedStaff.name" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="surname">Surname</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="surname" [(ngModel)]="selectedStaff.surname" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="telephone">Telephone</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="telephone" [(ngModel)]="selectedStaff.telephone" /></div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4"><label for="email">Email</label></div>
+          <div class="ui-grid-col-8"><input pInputText id="email" [(ngModel)]="selectedStaff.email" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-check" (click)="editStaff(name,surname,telephone,email)" label="Edit"></button>
+        </div>
+    </p-footer>
+</p-dialog>

@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components';
+import { DataListModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/primeng'
 
 // used to create fake backend
 import { fakeBackendProvider } from './service';
@@ -47,7 +49,7 @@ import { AdditionComponent } from './components/pages/addition/addition.componen
     DataTableModule,
     SharedModule,
     FormsModule,
-    DataTableModule,
+    DialogModule,
     ButtonModule
   ],
   providers: [

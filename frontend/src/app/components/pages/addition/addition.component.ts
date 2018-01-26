@@ -11,19 +11,28 @@ export class AdditionComponent implements OnInit {
 
   staffs: Staff[];
   selectedStaff: Staff;
+  newStaff: boolean;
+  staff: Staff = new Staff();
+
+  animalDialog: boolean;
+
+  staffDialog: boolean;
 
   animals: Animal[];
   selectedAnimal: Animal;
+  newAnimal: boolean;
+  animal: Animal=new Animal();
 
+  
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-     this.staff();
-     this.animal();
+     this.refreshStaff();
+     this.refreshAnimal();
   }
 
-  staff() {
+  refreshStaff() {
     this.apiService.get('api/employees/').subscribe(res => {
       console.log(res);
       this.staffs = res;
@@ -31,25 +40,28 @@ export class AdditionComponent implements OnInit {
  }
 
 
-  animal() {
+  refreshAnimal() {
     this.apiService.get('api/animals/').subscribe(res => {
       console.log(res);
       this.animals = res;
     });
  }
 
+
+ // ------------- ANIMALS
+
   viewAnimal(select: Animal) {
     console.log(JSON.stringify(select));
 
   }
 
-  deleteAnimal() {
-    this.apiService.delete('api/animals/' + this.selectedAnimal.id).subscribe(res => {
-        this.animal();
-    });
-}  
+  showUpdateAnimal() {
+    this.newAnimal = true;
+    this.animal= new Animal();
+    this.animalDialog =true;
+  }
 
-  addAnimal(type:string,name:string, gender:string, age:number, size:string, vaccines:string, history:string)
+  addAnimal(type:string,name:string, gender:string, age:number, size:string, vaccines:string, history:string) //works
   {
     const newAnimal = new Animal(type,name, gender, age, size, vaccines, history);
     this.apiService.post('api/animals/',newAnimal).subscribe(res =>{
@@ -57,19 +69,51 @@ export class AdditionComponent implements OnInit {
     }, error =>{
       console.log(error);
     });
+    this.refreshAnimal();
 
   }
+  
+  editAnimal(type:string,name:string, gender:string, age:number, size:string, vaccines:string, history:string) {
+    const replace = new Animal(type,name, gender, age, size, vaccines, history);
+    this.apiService.put('api/animals/' + this.selectedAnimal.id, replace).subscribe(res => {
+      console.log(res);
+    }, error =>{
+      console.log(error);
+    });
+    this.refreshAnimal();
+    this.animalDialog = false;
+}
+
+
+// -------------- STAFF
 
   viewStaff(select: Staff) {
     console.log(JSON.stringify(select));
 
   }
 
+  showUpdateStaff() {
+    this.newStaff = true;
+    this.staff= new Staff();
+    this.staffDialog =true;
+  }
+
   deleteStaff() {
     this.apiService.delete('api/employees/' + this.selectedStaff.id).subscribe(res => {
-        this.staff();
+        this.refreshStaff();
     });
 }  
+
+editStaff(name:string, surname:string, telephone:number, email:string) {
+  const replace =new Staff(name,surname,telephone,email);
+  this.apiService.put('api/employees/'+this.selectedStaff.id, replace).subscribe(res => {
+    console.log(res);
+  }, error =>{
+    console.log(error);
+  });
+  this.refreshStaff();
+  this.staffDialog = false;
+}
 
   addStaff(name:string, surname:string, telephone:number, email:string)
   {
@@ -79,10 +123,17 @@ export class AdditionComponent implements OnInit {
     }, error =>{
       console.log(error);
     });
+    this.refreshStaff();
 
   }
+  findStaffID(): number {
+    return this.staffs.indexOf(this.selectedStaff);
+ }
 
 }
+
+
+//------------ 
 
 class Staff {
   id:number;
