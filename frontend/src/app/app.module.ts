@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/pages/home/home.component';
+import { HomeComponent } from './components';
 
 // used to create fake backend
 import { fakeBackendProvider } from './service';

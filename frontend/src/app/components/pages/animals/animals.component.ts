@@ -8,17 +8,23 @@ import { MenuItem } from 'primeng/components/common/menuitem';
   styleUrls: ['./animals.component.less']
 })
 export class AnimalsComponent implements OnInit {
+
   animals: Animal[];
   selectedAnimal: Animal;
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.refresh();
+    this.apiService.get('api/animals/').subscribe(res => {
+      console.log(res);
+      
+      this.animals = res;
+    });
    
   }
 
   refresh() {
-    this.apiService.get('api/animals').subscribe(res =>{    
+    this.apiService.get('api/animals/').subscribe(res =>{    
     this.animals = res;
     console.log(this.animals[0].name);
    });

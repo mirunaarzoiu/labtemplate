@@ -27,10 +27,6 @@
    background-repeat: no-repeat;
    background-image:url(http://www.tridanim.com/images/lghttp.32478.nexcesscdn.net/80E972/organiclifestylemagazine/wp-content/uploads/2015/10/Cats-and-Dogs.jpg)
   }
-
-  .tabel{
-
-  }
   
 
 </style>
@@ -43,8 +39,9 @@
 
             </th>
             <tr>
-                <div class="container" id="tabel" >
+                <div class="container">
                     <p-dataTable [value]="animals" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal"  rows="15" [responsive]="true">
+                      
                       <p-column field="type" header="Type" [sortable]="true"></p-column>
                       <p-column field="name" header="Name" [sortable]="true"></p-column>
                       <p-column field="gender" header="Gender" [sortable]="true"></p-column>
