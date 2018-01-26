@@ -25,13 +25,15 @@ import { BaseRequestOptions } from '@angular/http';
 import { AnimalsComponent } from './components/pages/animals/animals.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { ButtonModule } from 'primeng/components/button/button';
+import { AdditionComponent } from './components/pages/addition/addition.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AnimalsComponent,
-    ContactComponent
+    ContactComponent,
+    AdditionComponent
   ],
   imports: [
     AppRoutingModule,

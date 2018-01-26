@@ -1,0 +1,88 @@
+<style type="text/css">
+  .container{
+    margin-top:20px;
+    margin-bottom:100px;
+    width:100%;
+    background-color:  rgba(0,0,0, 0.7);
+    height: 700px;
+  }
+
+
+  #title{
+    text-align:center;
+    padding-top: 25px;
+    font-size: 65px;
+    font-weight: bold;
+    color:black;
+    letter-spacing: 10px;
+    word-spacing: 10px;
+    text-shadow: 3px 2px white;
+    
+  }
+
+  #back{
+   height : 754px;
+   margin-top: -20px;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-image:url(http://www.tridanim.com/images/lghttp.32478.nexcesscdn.net/80E972/organiclifestylemagazine/wp-content/uploads/2015/10/Cats-and-Dogs.jpg)
+  }
+
+  tr{
+    height:150px;
+
+  }
+  
+
+</style>
+
+  <div id="back">
+      <h1 id="title">Adaugari / Modificari </h1>
+      <div class="container">
+          <table>
+            <tr height>
+              <td>
+                <p-dataTable [value]="animals" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal"  rows="10" [responsive]="true">
+                  
+                  <p-column field="type" header="Type" [sortable]="true"></p-column>
+                  <p-column field="name" header="Name" [sortable]="true"></p-column>
+                  <p-column field="gender" header="Gender" [sortable]="true"></p-column>
+                  <p-column field="age" header="Age" [sortable]="true"></p-column>
+                  <p-column field="size" header="Size" [sortable]="true"></p-column>
+                  <p-column field="vaccines" header="Vaccines" [sortable]="true"></p-column>
+                  <p-column field="history" header="History" [sortable]="true"></p-column>
+    
+                  <p-footer>
+                    <div class="ui-helper-clearfix" style="width:100%">
+                      <button type="button" pButton icon="fa-star" style="float:right" (click)="delete()" label="Update a pet!"></button>  
+                      <button type="button" pButton icon="fa-plus" style="float:right" (click)="delete()" label="Add a pet!"></button>
+                    </div>
+                  </p-footer>
+                </p-dataTable>
+              </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr>
+                <td>
+                    <p-dataTable [value]="staffs" [scrollable]="true" selectionMode="single" [(selection)]="selectedAnimal"  rows="10" [responsive]="true">
+                      
+                      <p-column field="name" header="Name" [sortable]="true"></p-column>
+                      <p-column field="surname" header="Surname" [sortable]="true"></p-column>
+                      <p-column field="telephone" header="Telephone" [sortable]="true"></p-column>
+                      <p-column field="email" header="Email" [sortable]="true"></p-column>
+        
+                      <p-footer>
+                        <div class="ui-helper-clearfix" style="width:100%">
+                          <button type="button" pButton icon="fa-minus" style="float:right" (click)="deleteStaff()" label="Delete"></button>
+                          <button type="button" pButton icon="fa-star" style="float:right" (click)="updateStaff()" label="Update"></button>
+                          <button type="button" pButton icon="fa-plus" style="float:right" (click)="addStaff()" label="Add"></button>
+                        </div>
+                      </p-footer>
+                    </p-dataTable>
+                  </td>
+            </tr>
+          </table>
+          
+
+      </div> 
+  </div>
