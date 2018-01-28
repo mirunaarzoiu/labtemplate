@@ -17,13 +17,11 @@
     letter-spacing: 10px;
     word-spacing: 10px;
     text-shadow: 3px 2px white;
-
   }
 
   #date {
     text-align: center;
-    font-size: 35px;
-    font-weight: bold;
+    font: bold 35px Georgia, serif;
     color: white;
   }
 
@@ -38,64 +36,85 @@
   #spatiu {
     height: 100px;
   }
-
-  #tabel {
-    margin: auto;
-    background-color: white;
-    padding: 15px;
-    text-align: center;
-    width: 70%;
-  }
-
-  td, th {
-    border: 1px solid black;
-    height: 30px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #b8cbdd;
-  }
 </style>
 
 <div id="back">
   <h1 id="title"> CONTACT </h1>
   <div class="container">
 
-    <h2 id="date">Adresa: Str. Lunga, nr. 73, Brasov
-      <br> Nr. telefon: 0737894123 / 0268362891
+    <h2 id="date">Address: Str. Lunga 73, Brasov
+      <br> Phone: 0737894123 / 0268362891
     </h2>
-
     <h3 id="spatiu"></h3>
+    <table>
 
-    <table id="tabel">
-      <tr>
-        <th>Nume</th>
-        <th>Nr. telefon</th>
-        <th>Disponibilitate</th>
-      </tr>
+      <p-dataTable [value]="vets" [scrollable]="true" selectionMode="single" [(selection)]="selectedVet" rows="7" [responsive]="true">
 
-      <tr>
-        <td>Dr. Miruna Arzoiu</td>
-        <td>0732637819</td>
-        <td>Luni-Miercuri: 10-15</td>
-      </tr>
+        <p-column field="name" header="Name" [sortable]="true"></p-column>
+        <p-column field="surname" header="Surname" [sortable]="true"></p-column>
+        <p-column field="telephone" header="Telephone" [sortable]="true"></p-column>
+        <p-column field="email" header="E-mail" [sortable]="true"></p-column>
+        <p-column field="clinic" header="Clinic" [sortable]="true"></p-column>
 
-      <tr>
-        <td>Dr. Denisa Balta</td>
-        <td>0746987513</td>
-        <td>Marti-Joi: 15-20</td>
-      </tr>
-
-      <tr>
-        <td>Dr. Emilia Nica</td>
-        <td>0728034976</td>
-        <td>Joi-Sambata: 12-17</td>
-      </tr>
+        <p-footer>
+          <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton icon="fa-star" style="float:center" (click)="showDialogToAdd()" label="Add a vet!"></button>
+            <button type="button" pButton icon="fa-minus" style="float:right" (click)="deleteVet()" label="Delete"></button>
+          </div>
+        </p-footer>
+      </p-dataTable>
 
     </table>
 
-
+    <p-dialog header="Vet Details" [(visible)]="vetDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
+      <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="vet">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="name">Name</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="name" [(ngModel)]="vet.name" />
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="surname">Surname</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="surname" [(ngModel)]="vet.surname" />
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="telephone">Telephone</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="telephone" [(ngModel)]="vet.telephone" />
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="email">E-mail</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="email" [(ngModel)]="vet.email" />
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-4">
+            <label for="clinic">Clinic</label>
+          </div>
+          <div class="ui-grid-col-8">
+            <input pInputText id="clinic" [(ngModel)]="vet.clinic" />
+          </div>
+        </div>
+      </div>
+      <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+      </p-footer>
+    </p-dialog>
   </div>
 </div>
-
 

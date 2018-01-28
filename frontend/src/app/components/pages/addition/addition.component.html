@@ -46,6 +46,12 @@
     background-color: rgba(0, 0, 0, 0.9);
 
   }
+
+  .text{
+    width: 500px;
+    font: bold 17px Georgia, serif;
+    color: silver;
+  }
 </style>
 
 <div id="back">
@@ -126,7 +132,7 @@
         </td>
       </tr>
       <tr height=150px>
-        <td></td>
+        <td class="text">Whoever saves a life, saves the world entire.</td>
         <td></td>
       </tr>
       <tr>
@@ -185,9 +191,11 @@
 
       </tr>
     </table>
+    <p style="font: bold 17px Georgia, serif;
+    color: silver; text-align: right;">The greatness of a nation and its moral progress can be judged by the way its animals are treated.</p>
 
   </div>
-</div>
+  </div>
 
 <p-dialog header="Update Animal" [(visible)]="animalDialog" [responsive]="true" showEffect="fade" appendTo="body" [modal]="true">
     <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedAnimal">
